@@ -1,8 +1,7 @@
-<h1 class="display-6">Cadastrar</h1>
+<h1 class="display-6">{{ clienteCPF != 'null' ? "Editar" : "Cadastrar" }}</h1>
 <hr>
-<div>{{ clienteForm.value | json }}</div>
 <div class="container-fluid">
-  <form [formGroup]="clienteForm" (ngSubmit)="cadastrar()">
+  <form [formGroup]="clienteForm" (ngSubmit)="cadastrarEditar()">
     <div class="row">
       <div class="col-6">
         <div class="mb-3">
@@ -12,6 +11,7 @@
             type="text"
             class="form-control"
             formControlName="nome"
+            onfocus="this.select();"
           >
         </div>
       </div>
@@ -20,9 +20,10 @@
           <label for="cpf" class="form-label">CPF</label>
           <input
             id="cpf"
-            type="number"
+            type="string"
             class="form-control"
             formControlName="cpf"
+            onfocus="this.select();"
           >
         </div>
       </div>
@@ -34,6 +35,7 @@
             type="text"
             class="form-control"
             formControlName="telefone"
+            onfocus="this.select();"
           >
         </div>
       </div>
@@ -46,6 +48,7 @@
               type="text"
               class="form-control"
               formControlName="rua"
+              onfocus="this.select();"
             >
           </div>
         </div>
@@ -57,6 +60,8 @@
               type="number"
               class="form-control"
               formControlName="numero"
+              min="0"
+              onfocus="this.select();"
             >
           </div>
         </div>
@@ -68,6 +73,7 @@
               type="text"
               class="form-control"
               formControlName="cep"
+              onfocus="this.select();"
             >
           </div>
         </div>
@@ -80,10 +86,12 @@
             type="number"
             class="form-control"
             formControlName="rendimentoMensal"
+            min="0"
+            onfocus="this.select();"
           >
         </div>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <button type="submit" [disabled]="!clienteForm.valid" class="btn btn-primary">{{ clienteCPF != 'null' ? "Editar" : "Cadastrar" }}</button>
   </form>
 </div>

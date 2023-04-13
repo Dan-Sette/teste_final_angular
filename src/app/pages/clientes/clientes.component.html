@@ -22,8 +22,8 @@
       <td>{{ cliente.endereco.rua }}, {{ cliente.endereco.numero }}, {{ cliente.endereco.cep }}</td>
       <td>{{ cliente.rendimentoMensal | currency: 'BRL'}}</td>
       <td>
-        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
-        <button type="button" class="btn btn-secondary btn-sm ms-1">Editar</button>
+        <button type="button" class="btn btn-secondary btn-sm m-1" [routerLink]="['/clientes/editar/', cliente.cpf]">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="deletarCliente(cliente.cpf)">Excluir</button>
       </td>
     </tr>
   </tbody>

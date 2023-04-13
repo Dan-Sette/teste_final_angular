@@ -1,11 +1,11 @@
 export interface ICliente {
   nome: string;
-  cpf: number;
+  cpf: string;
   telefone: string;
   endereco: {
         rua: string,
         numero: number,
-        cep: number
+        cep: string,
     },
   rendimentoMensal: number;
 }
